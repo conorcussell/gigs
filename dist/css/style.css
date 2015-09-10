@@ -1,0 +1,382 @@
+body {
+	margin: 0;
+	background-color: #37457e;
+	color: #fff;
+	font-family: "work_sansregular";
+	-webkit-transition: all .2s ease-in-out;
+	        transition: all .2s ease-in-out;
+	overflow: hidden;
+	    
+}
+
+header {
+	font-size: 24px;
+	text-align: center;
+	margin-top: 20px;
+}
+
+a {
+	-webkit-transition: all .2s ease-in-out;
+	        transition: all .2s ease-in-out;
+	    
+}
+
+.content {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform:translate(-50%,-50%);
+	-ms-transform:translate(-50%,-50%);
+	    transform:translate(-50%,-50%);
+	text-align: center;
+	color: #fff;
+	font-size: 50px;
+}
+
+.shuffle {
+	font-size: 40px;
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	padding: 20px;
+	-webkit-transform:translate(-50%, 200%);
+	-ms-transform:translate(-50%, 200%);
+	    transform:translate(-50%, 200%);
+	cursor: pointer;
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    --webkit-transition: all .3s ease-in-out;
+       -webkit-transition: all .3s ease-in-out;
+               transition: all .3s ease-in-out;
+        
+}
+
+.shuffle.active {
+	-webkit-transform:translate(-50%, 0%);
+	-ms-transform:translate(-50%, 0%);
+	    transform:translate(-50%, 0%);
+}
+
+div a {
+	color: #fff;
+	text-decoration: none;
+}
+
+div a:hover {
+	text-decoration: underline;
+}
+
+@font-face {
+    font-family: 'work_sansregular';
+    src: url('../fonts/worksans-regular-webfont.woff2');
+    src: url('../fonts/worksans-regular-webfont.woff') format('woff'),
+         url('../fonts/worksans-regular-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.api-credit {
+	width: 18px;
+	float: right;
+
+}
+
+.credit div {
+	position: absolute;
+	left: 0px;
+	top: 2px;
+}
+
+.credit {
+	width: 100px;
+	position: absolute;
+	right: 5px;
+	bottom:5px;
+	filter: alpha(opacity=50);
+	     -khtml-opacity: .50;
+	       -moz-opacity: .50;
+	            opacity: .50;
+}
+
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+
+#sidebar-wrapper {
+    background-color: #ffce6d;
+    position: fixed;
+    left: 250px;
+    width: 0;
+    height: 100%;
+    margin-left: -250px;
+    overflow-y: auto;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+#sidebar-wrapper span {
+	display: block;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 250px;
+}
+
+#page-content-wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+.start {
+	display: none;
+	text-align: center;
+}
+
+.start label {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	width: 250px;
+	-webkit-transform:translateX(-50%);
+	-ms-transform:translateX(-50%);
+	    transform:translateX(-50%);
+}
+
+.start input {
+	margin-top: 80px;
+	width: 300px;
+}
+
+.start a {
+	margin-top: 30px;
+	display: block;
+	border-radius: 50%;
+	height: 150px;
+	width: 150px;
+	text-align: center;
+	line-height: 150px;
+	font-size: 20px;
+	background-color: #ffce6d;
+	color: #37457e;
+	margin-left: auto;
+	margin-right: auto;
+	cursor: pointer;
+}
+
+.start a:hover {
+	filter: alpha(opacity=90);
+	     -khtml-opacity: .9;
+	       -moz-opacity: .9;
+	            opacity: .9;
+	text-decoration: none;
+	border-top-left-radius: 48%;
+	border-bottom-left-radius: 47%;
+	border-top-right-radius: 43%;
+	border-bottom-right-radius: 54%;
+}
+
+
+
+input[type=range] {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  width: 300px; /* Specific width is required for Firefox. */
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+  background: transparent; /* Hides the slider so custom styles can be added */
+  border-color: transparent;
+  color: transparent;
+}
+
+/* Special styling for WebKit/Blink */
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  background: #ff7858;
+  cursor: pointer;
+  margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+}
+
+/* All the same stuff for Firefox */
+input[type=range]::-moz-range-thumb {
+  border: none;
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  background: #ff7858;
+  cursor: pointer;
+}
+
+/* All the same stuff for IE */
+input[type=range]::-ms-thumb {
+  border: none;
+  height: 36px;
+  width: 36px;
+  border-radius:50%;
+  background: #ff7858;
+  cursor: pointer;
+}
+
+
+/* Track*/
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: none;
+  background: rgba(255,255,255,0.5);
+  border-radius: 4.2px;
+  border: none;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: none;
+}
+
+input[type=range]::-moz-range-track {
+   width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: none;
+  background: rgba(255,255,255,0.5);
+  border-radius: 4.2px;
+  border: none;
+}
+
+input[type=range]::-ms-track {
+   width: 100%;
+  height: 8.4px;
+  cursor: pointer;
+  box-shadow: none;
+  background: rgba(255,255,255,0.5);
+  border-radius: 4.2px;
+  border: none;
+}
+
+.spinner {
+	background-color: #ff7858;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+
+	width: 200px;
+	height: 200px;
+	-webkit-animation: spinner 3s infinite linear;
+	        animation: spinner 3s infinite linear;
+}
+
+@-webkit-keyframes spinner {
+  0% {
+    -webkit-transform: translate(-50%,-50%) rotate(0deg);
+            transform: translate(-50%,-50%) rotate(0deg);
+    border-top-left-radius:50%;
+    border-top-right-radius:50%;
+     border-bottom-right-radius:50%;
+    border-bottom-left-radius:50%;
+  }
+  20% {
+    border-top-left-radius:42%;
+    border-top-right-radius:50%;
+     border-bottom-right-radius:46%;
+    border-bottom-left-radius:47%;
+  }
+   50% {
+     border-top-left-radius:40%;
+    border-top-right-radius:43%;
+     border-bottom-right-radius:46%;
+    border-bottom-left-radius:44%;
+  }
+   75% {
+    border-top-left-radius:52%;
+    border-top-right-radius:45%;
+     border-bottom-right-radius:48%;
+    border-bottom-left-radius:50%;
+  }
+  100% {
+    -webkit-transform: translate(-50%,-50%) rotate(360deg);
+            transform: translate(-50%,-50%) rotate(360deg);
+     border-top-left-radius:50%;
+    border-top-right-radius:50%;
+     border-bottom-right-radius:50%;
+    border-bottom-left-radius:50%;
+  }
+}
+
+@keyframes spinner {
+  0% {
+    -webkit-transform: translate(-50%,-50%) rotate(0deg);
+            transform: translate(-50%,-50%) rotate(0deg);
+    border-top-left-radius:50%;
+    border-top-right-radius:50%;
+     border-bottom-right-radius:50%;
+    border-bottom-left-radius:50%;
+  }
+  20% {
+    border-top-left-radius:42%;
+    border-top-right-radius:50%;
+     border-bottom-right-radius:46%;
+    border-bottom-left-radius:47%;
+  }
+   50% {
+     border-top-left-radius:40%;
+    border-top-right-radius:43%;
+     border-bottom-right-radius:46%;
+    border-bottom-left-radius:44%;
+  }
+   75% {
+    border-top-left-radius:52%;
+    border-top-right-radius:45%;
+     border-bottom-right-radius:48%;
+    border-bottom-left-radius:50%;
+  }
+  100% {
+    -webkit-transform: translate(-50%,-50%) rotate(360deg);
+            transform: translate(-50%,-50%) rotate(360deg);
+     border-top-left-radius:50%;
+    border-top-right-radius:50%;
+     border-bottom-right-radius:50%;
+    border-bottom-left-radius:50%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+	.content {
+		font-size: 32px;
+		width: 95%;
+	}
+
+	.shuffle {
+		padding: 12px;
+		font-size: 20px;
+	}
+}

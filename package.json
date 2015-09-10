@@ -1,0 +1,17 @@
+{
+    "name": "boilerplate",
+    "version": "0.0.1",
+    "author": "Conor Cussell",
+    "description": "Starter for static web projects",
+    "license": "MIT",
+    "dependencies": {
+        "grunt": "latest",
+        "autoprefixer": "latest",
+        "grunt-contrib-watch": "latest",
+        "grunt-contrib-cssmin": "latest",
+        "grunt-contrib-imagemin": "latest",
+        "grunt-contrib-uglify": "latest",
+        "grunt-contrib-jshint": "latest",
+        "grunt-postcss": "latest"
+    }
+}
