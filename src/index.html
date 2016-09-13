@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Gigs Near Me Tonight</title>
+    <meta name="description" content="Gigs near you tonight">
+    <meta name="author" content="Conor Cussell">
+  </head>
+  <body>
+    <header>Gigs near you tonight</header>
+    <div class="content">
+        <div id="here"></div>
+        <div class="spinner"></div>
+          <div class="start">
+          <label>
+          <output for='range' id='range'>5</output> Miles</label>
+          <input id="max-distance" class="slider" type='range' min='1' value='5' max='50' step='1' oninput="outputUpdate(value)">
+          <a class="start">Find Gigs</a>
+          </div>
+    </div>
+    <a class="shuffle" style="background-color:#ff7858;">Shuffle</a>
+    <div class="credit"><span>Data from</span> <img src="dist/img/img/songkick.png" class="api-credit"></div>
+    <script async src="dist/js/script.min.js"></script>
+  </body>
+</html>
