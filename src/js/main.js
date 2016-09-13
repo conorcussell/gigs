@@ -5,19 +5,22 @@ document.onreadystatechange = function () {
 };
 
 var App = (function App() {
+
+  var gigs = [];
+
   function init() {
     getGigs();
   };
 
   function getGigs() {
-    fetch('http://api.songkick.com/api/3.0/events.json?apikey=afM2GDbBHSRIRxf6&location=clientip', {mode: 'no-cors'})
-    .then(function(response) {
-      return response.json()
-    }).then(function(json) {
-      console.log('parsed json', json)
-    }).catch(function(ex) {
-      console.log('parsing failed', ex)
-    });
+    fetchJsonp('http://api.songkick.com/api/3.0/events.json?apikey=afM2GDbBHSRIRxf6&location=clientip&page=1', {jsonpCallback: 'jsoncallback',})
+      .then(function(response) {
+        return response.json()
+      }).then(function(json) {
+        gigs.push(json);
+      }).catch(function(ex) {
+        console.log('parsing failed', ex)
+      })
   };
 
   var publicAPI = {
