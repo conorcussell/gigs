@@ -1,22 +1,23 @@
 {
-    "name": "gigs",
-    "version": "0.0.1",
-    "author": "Conor Cussell",
-    "description": "Gigs",
-    "license": "MIT",
-    "devDependencies": {
-      "babel-preset-es2015-rollup": "^1.2.0",
-      "eslint": "^3.5.0",
-      "rollup": "^0.35.9",
-      "rollup-plugin-babel": "^2.6.1",
-      "rollup-plugin-commonjs": "^4.1.0",
-      "rollup-plugin-eslint": "^3.0.0",
-      "rollup-plugin-node-resolve": "^2.0.0",
-      "rollup-plugin-replace": "^1.1.1",
-      "rollup-plugin-uglify": "^1.0.1"
+  "name": "gigs",
+  "version": "0.0.1",
+  "author": "Conor Cussell",
+  "description": "Gigs",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-preset-es2015-rollup": "^1.2.0",
+    "eslint": "^3.5.0",
+    "rollup": "^0.35.9",
+    "rollup-plugin-babel": "^2.6.1",
+    "rollup-plugin-commonjs": "^4.1.0",
+    "rollup-plugin-eslint": "^3.0.0",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "rollup-plugin-replace": "^1.1.1",
+    "rollup-plugin-uglify": "^1.0.1"
   },
   "dependencies": {
+    "autoprefixer": "latest",
     "debug": "^2.2.0",
-    "autoprefixer": "latest"
+    "fetch-jsonp": "^1.0.1"
   }
 }
