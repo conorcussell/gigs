@@ -5,7 +5,9 @@
   "description": "Gigs",
   "license": "MIT",
   "scripts": {
-    "build:dev": "./node_modules/.bin/rollup -c rollup.config.dev.js --watch",
+    "rollup:watch": "./node_modules/.bin/rollup -c rollup.config.dev.js --watch",
+    "livereload": "./node_modules/.bin/livereload 'build/'",
+    "build:dev": "npm run rollup:watch & npm run livereload",
     "build:prod": "./node_modules/.bin/rollup -c rollup.config.prod.js"
   },
   "devDependencies": {
