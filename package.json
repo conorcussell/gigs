@@ -16,7 +16,6 @@
   },
   "dependencies": {
     "autoprefixer": "latest",
-    "debug": "^2.2.0",
     "fetch-jsonp": "^1.0.1"
   }
 }
