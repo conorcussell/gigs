@@ -14,10 +14,10 @@ export function getGigs(page) {
       events.map(function(event) {
         gigs.push(event);
       });
-      page++;
-      if (page * 50 < total ) {
-        getGigs(page);
-      }
+      // page++;
+      // if (page * 50 < total ) {
+      //   getGigs(page);
+      // }
       console.log(page);
     }).catch(function(ex) {
       console.log('parsing failed', ex)
