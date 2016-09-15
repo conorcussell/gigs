@@ -1,17 +1,26 @@
 import fetchJsonp from 'fetch-jsonp';
+import { randomIndex, getMonth } from './Utils';
 
-var gigs = [];
-var page = 1;
-var total = 0;
+let gigs = [];
+let page = 1;
+let total = 0;
 
 export function getGigs(page) {
-  fetchJsonp('http://api.songkick.com/api/3.0/events.json?apikey=afM2GDbBHSRIRxf6&location=clientip&page=' + page, {jsonpCallback: 'jsoncallback',})
+  let date = new Date();
+  date = date.toISOString().split('T')[0];
+
+  fetchJsonp(
+    `http://api.songkick.com/api/3.0/events.json?apikey=afM2GDbBHSRIRxf6&location=clientip&min_date=${date}&max_date=${date}&page=${page}`,
+    {
+      jsonpCallback: 'jsoncallback'
+    }
+  )
     .then(function(response) {
-      return response.json()
+      return response.json();
     }).then(function(json) {
       total = json.resultsPage.totalEntries;
-      var events = json.resultsPage.results.event;
-      events.map(function(event) {
+      const events = json.resultsPage.results.event;
+      events.map((event) => {
         gigs.push(event);
       });
       page++;
@@ -19,14 +28,28 @@ export function getGigs(page) {
         getGigs(page);
       }
     }).catch(function(ex) {
-      console.log('parsing failed', ex)
-    })
+      console.log('parsing failed', ex);
+    });
 }
 
 export function handleShuffle() {
-  var randomIndex = Math.floor(Math.random()*gigs.length);
-  var gig = gigs.splice(randomIndex, 1);
-  console.log(gig[0].displayName, gigs.length, gigs);
+  const gig = gigs.splice(randomIndex(gigs), 1);
+  showGig(gig);
+}
+
+function showGig(gig) {
+  const container = document.querySelector('.js-gig');
+  container.textContent = stripDate(gig[0].displayName);
+}
+
+function createGig(gig) {
+  const element = document.createElement('div');
+  element.textContent = '';
+  return element;
+}
+
+function stripDate(string) {
+  return string.slice(0, string.indexOf(` (${getMonth()}`));
 }
 
 export default getGigs;
