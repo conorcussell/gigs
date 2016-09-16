@@ -1,5 +1,5 @@
 import fetchJsonp from 'fetch-jsonp';
-import { randomIndex, getMonth } from './Utils';
+import { randomIndex, getMonth, distance } from './Utils';
 
 let gigs = [];
 let page = 1;
@@ -26,10 +26,41 @@ export function getGigs(page) {
       page++;
       if (page * 50 < total ) {
         getGigs(page);
+      } else {
+        geolocate();
       }
     }).catch(function(ex) {
       console.log('parsing failed', ex);
     });
+}
+
+function geolocate() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const userPosition = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      filterGigs(userPosition, gigs);
+    }, (error) => {
+      console.log('error');
+    });
+  }
+}
+
+function filterGigs(userPosition, gigs) {
+  console.log(gigs.length);
+  // remove gigs which are too far away.
+  gigs = gigs.filter((gig) => {
+    const gigPosition = {
+      lat: gig.location.lat,
+      lng: gig.location.lng
+    };
+    console.log(distance(gigPosition.lat, gigPosition.lng, userPosition.lat, userPosition.lng));
+    return distance(gigPosition.lat, gigPosition.lng, userPosition.lat, userPosition.lng) <= 5;
+  });
+
+  console.log(gigs.length, gigs);
 }
 
 export function handleShuffle() {
