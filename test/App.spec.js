@@ -1,4 +1,4 @@
-import { url, filterByDistance } from '../';
+import { url, filterByDistance } from '../src/js/modules/App';
 import { expect } from 'chai';
 
 describe('url', () => {

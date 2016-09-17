@@ -21,6 +21,8 @@ export default {
       ]
     }),
     babel({
+      presets: [ 'es2015-rollup' ],
+      babelrc: false
       exclude: 'node_modules/**',
     })
   ],
