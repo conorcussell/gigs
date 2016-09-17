@@ -5,22 +5,6 @@ let gigs = [];
 let page = 1;
 let total = 0;
 
-export function getArea() {
-  // http://api.songkick.com/api/3.0/search/locations.json?location=geo:52.3549194,0.1746486&apikey=afM2GDbBHSRIRxf6
-  fetchJsonp(
-    'http://api.songkick.com/api/3.0/search/locations.json?location=geo:52.3549194,0.1746486&apikey=afM2GDbBHSRIRxf6',
-    {
-      jsonpCallback: 'jsoncallback'
-    }
-  ).then((response) => {
-    return response.json();
-  }).then((json) => {
-    console.log(json);
-  }).catch((err) => {
-    console.log('Parsing failed', err);
-  });
-}
-
 export function getGigs(page) {
   let date = new Date();
   date = date.toISOString().split('T')[0];

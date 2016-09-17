@@ -1,10 +1,8 @@
-import { getGigs, getArea, handleShuffle } from './modules/App.js';
+import { getGigs, handleShuffle } from './modules/App.js';
 
 document.onreadystatechange = function () {
   if (document.readyState === 'complete') {
-    // getGigs(1);
-
-    getArea();
+    getGigs(1);
 
     var shuffle = document.querySelector('.js-shuffle-gigs');
 
