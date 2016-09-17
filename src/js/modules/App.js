@@ -5,6 +5,22 @@ let gigs = [];
 let page = 1;
 let total = 0;
 
+export function getArea() {
+  // http://api.songkick.com/api/3.0/search/locations.json?location=geo:52.3549194,0.1746486&apikey=afM2GDbBHSRIRxf6
+  fetchJsonp(
+    'http://api.songkick.com/api/3.0/search/locations.json?location=geo:52.3549194,0.1746486&apikey=afM2GDbBHSRIRxf6',
+    {
+      jsonpCallback: 'jsoncallback'
+    }
+  ).then((response) => {
+    return response.json();
+  }).then((json) => {
+    console.log(json);
+  }).catch((err) => {
+    console.log('Parsing failed', err);
+  });
+}
+
 export function getGigs(page) {
   let date = new Date();
   date = date.toISOString().split('T')[0];
@@ -29,6 +45,8 @@ export function getGigs(page) {
       } else {
         geolocate();
       }
+
+      console.log(gigs);
     }).catch(function(ex) {
       console.log('parsing failed', ex);
     });
@@ -41,6 +59,7 @@ function geolocate() {
         lat: position.coords.latitude,
         lng: position.coords.longitude
       };
+      console.log(userPosition.lat, userPosition.lng);
       filterGigs(userPosition, gigs);
     }, (error) => {
       console.log('error');
@@ -48,16 +67,15 @@ function geolocate() {
   }
 }
 
-function filterGigs(userPosition, gigs) {
+function filterGigs(userPosition, gigsToFilter) {
   console.log(gigs.length);
-  // remove gigs which are too far away.
   gigs = gigs.filter((gig) => {
     const gigPosition = {
       lat: gig.location.lat,
       lng: gig.location.lng
     };
     console.log(distance(gigPosition.lat, gigPosition.lng, userPosition.lat, userPosition.lng));
-    return distance(gigPosition.lat, gigPosition.lng, userPosition.lat, userPosition.lng) <= 5;
+    return distance(gigPosition.lat, gigPosition.lng, userPosition.lat, userPosition.lng) <= 50;
   });
 
   console.log(gigs.length, gigs);
@@ -66,6 +84,7 @@ function filterGigs(userPosition, gigs) {
 export function handleShuffle() {
   const gig = gigs.splice(randomIndex(gigs), 1);
   showGig(gig);
+  console.log(gigs);
 }
 
 function showGig(gig) {
