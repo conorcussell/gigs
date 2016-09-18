@@ -141,6 +141,13 @@ div a:hover {
 	border-bottom-right-radius: 54%;
 }
 
+.gig-container {
+  opacity: 0;
+}
+
+.gig-container.fadeIn {
+  opacity: 1;
+}
 
 
 input[type=range] {

@@ -1,6 +1,6 @@
 import fetchJsonp from 'fetch-jsonp';
 
-import { calculateDistance } from './Utils';
+import { calculateDistance, randomIndex } from './Utils';
 
 const state = {
   gigs: [],
@@ -86,10 +86,22 @@ export function handleFormSubmit(e) {
   state.maxDistance = distance;
   state.gigsNearby = filterByDistance(state.gigs, state.userPosition, state.maxDistance);
   if (state.gigsNearby.length) {
-    console.log(state.gigs, state.gigsNearby, state.maxDistance);
+    fadeOut(document.querySelector('.js-form-container'));
+    nextGig(state.gigsNearby);
   } else {
     handleNoGigs();
   }
+}
+
+function nextGig(gigs) {
+  const gig = state.gigsNearby.splice(randomIndex(gigs));
+  const el = createGigEl(gig[0]);
+  fadeIn(document.querySelector('.js-gig'));
+  renderGig(el, document.querySelector('.js-gig'));
+}
+
+export function createGigEl(gig) {
+  return `<a href="${gig.uri}" target="_blank">${gig.displayName}</a>`;
 }
 
 export function handleNoGigs() {
@@ -97,5 +109,5 @@ export function handleNoGigs() {
 }
 
 export function renderGig(element, container) {
-  container.innerHTML('element');
+  container.innerHTML = element;
 }
