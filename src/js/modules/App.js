@@ -37,7 +37,8 @@ export function getUserPosition() {
         lng: position.coords.longitude
       };
       getGigs(url(date, state.userPosition), 1);
-    }, (error) => {
+    }, (err) => {
+      console.log('could not geolocate', err); // eslint-disable-line no-console
       getGigs(url(date), 1);
     });
   } else {
@@ -57,8 +58,8 @@ function getGigs(url, page) {
       fadeOut(document.querySelector('.js-loading'));
       fadeIn(document.querySelector('.js-form-container'));
     }
-  }).catch((ex) => {
-    return ex;
+  }).catch((err) => {
+    throw err;
   });
 }
 
@@ -87,6 +88,7 @@ export function handleFormSubmit(e) {
   state.gigsNearby = filterByDistance(state.gigs, state.userPosition, state.maxDistance);
   if (state.gigsNearby.length) {
     fadeOut(document.querySelector('.js-form-container'));
+    fadeIn(document.querySelector('.js-gig'));
     nextGig(state.gigsNearby);
   } else {
     handleNoGigs();
@@ -96,8 +98,12 @@ export function handleFormSubmit(e) {
 function nextGig(gigs) {
   const gig = state.gigsNearby.splice(randomIndex(gigs));
   const el = createGigEl(gig[0]);
-  fadeIn(document.querySelector('.js-gig'));
   renderGig(el, document.querySelector('.js-gig'));
+}
+
+export function handleShuffle(e) {
+  e.preventDefault();
+  nextGig(state.nearbyGigs);
 }
 
 export function createGigEl(gig) {

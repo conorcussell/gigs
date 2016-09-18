@@ -32,6 +32,19 @@ a {
 	font-size: 50px;
 }
 
+.gig-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  -webkit-transform:translate(-50%,-50%);
+  -moz-transform:translate(-50%,-50%);
+  transform:translate(-50%,-50%);
+  text-align: center;
+  color: #fff;
+  font-size: 2.5rem;
+}
+
 .shuffle {
 	font-size: 40px;
 	position: absolute;
