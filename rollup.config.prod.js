@@ -8,7 +8,7 @@ export default {
   entry: 'src/js/main.js',
   dest: 'build/js/main.min.js',
   format: 'iife',
-  sourceMap: 'inline',
+  sourceMap: false,
   plugins: [
     resolve({
       jsnext: true,
