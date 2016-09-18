@@ -60,8 +60,18 @@ function getGigs(url, page) {
     if (page * 50 < json.resultsPage.totalEntries) {
       getGigs(url, page + 1);
     } else {
-      fadeOut(document.querySelector('.js-loading'));
-      fadeIn(document.querySelector('.js-form-container'));
+      if (state.userPosition.lat !== '') {
+        fadeOut(document.querySelector('.js-loading'));
+        fadeIn(document.querySelector('.js-form-container'));
+      } else {
+        state.gigsNearby = state.gigs;
+        fadeOut(document.querySelector('.js-form-container'));
+        setTimeout(() => {
+          fadeIn(document.querySelector('.js-gig'));
+          document.querySelector('.js-shuffle').classList.add('active');
+        }, 500);
+        nextGig(state.gigsNearby);
+      }
     }
   }).catch((err) => {
     throw err;
