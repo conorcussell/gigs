@@ -7,4 +7,4 @@ was a mess of jQuery made a few years ago in 45 mins when I thought of the idea.
 
 #### Version 2
 
-is less than 17kb (8.4kb gzipped) kept small using system fonts and ES6 Javascript bundled using RollupJS
+WIP at https://gigs.surge.sh is less than 17kb (8.4kb gzipped) kept small using system fonts and ES6 Javascript bundled using RollupJS
