@@ -1,5 +1,11 @@
 import fetchJsonp from 'fetch-jsonp';
 
+const state = {
+  events: [],
+  eventsNearby: [],
+  maxDistance: 5
+};
+
 export function url(date, userPosition) {
   const apiKey = 'afM2GDbBHSRIRxf6';
   const location = userPosition ? `geo:${userPosition.lat},${userPosition.lng}` : 'clientip';
