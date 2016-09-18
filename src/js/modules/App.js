@@ -38,8 +38,7 @@ export function getGigs(url, page) {
   .then((response) => {
     return response.json();
   }).then((json) => {
-    console.log(json);
-    return json;
+    console.log(json.resultsPage.results);
   }).catch((ex) => {
     return ex;
   });
