@@ -85,7 +85,7 @@ export function handleFormSubmit(e) {
   const distance = e.currentTarget.querySelector('.js-distance').value;
   state.maxDistance = distance;
   state.gigsNearby = filterByDistance(state.gigs, state.userPosition, state.maxDistance);
-  if (state.gigs.length) {
+  if (state.gigsNearby.length) {
     console.log(state.gigs, state.gigsNearby, state.maxDistance);
   } else {
     handleNoGigs();
@@ -93,7 +93,7 @@ export function handleFormSubmit(e) {
 }
 
 export function handleNoGigs() {
-
+  fadeOut(document.querySelector('.js-form-container'));
 }
 
 export function renderGig(element, container) {
