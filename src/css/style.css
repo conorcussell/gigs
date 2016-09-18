@@ -5,8 +5,8 @@ body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	overflow: hidden;
   -webkit-transition: all .2s ease-in-out;
-	   -moz-transition: all .2s ease-in-out;
-	        transition: all .2s ease-in-out;
+	-moz-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
 }
 
 header {
@@ -17,8 +17,8 @@ header {
 
 a {
 	-webkit-transition: all .2s ease-in-out;
-	   -moz-transition: all .2s ease-in-out;
-	        transition: all .2s ease-in-out;
+	-moz-transition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
 
 }
 
@@ -58,15 +58,14 @@ a {
 	transform:translate(-50%, 200%);
 	cursor: pointer;
 	-webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    --webkit-transition: all .3s ease-in-out;
-       -moz-transition: all .3s ease-in-out;
-            transition: all .3s ease-in-out;
-
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  --webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
 }
 
 .shuffle.active {
@@ -87,7 +86,6 @@ div a:hover {
 .api-credit {
 	width: 18px;
 	float: right;
-
 }
 
 .credit div {
@@ -102,9 +100,9 @@ div a:hover {
 	right: 5px;
 	bottom:5px;
 	filter: alpha(opacity=50);
-	     -khtml-opacity: .50;
-	       -moz-opacity: .50;
-	            opacity: .50;
+	-khtml-opacity: .50;
+	-moz-opacity: .50;
+	opacity: .50;
 }
 
 .block {
@@ -146,9 +144,9 @@ div a:hover {
 
 .submit-btn:hover {
 	filter: alpha(opacity=90);
-	     -khtml-opacity: .9;
-	       -moz-opacity: .9;
-	            opacity: .9;
+  -khtml-opacity: .9;
+	-moz-opacity: .9;
+	opacity: .9;
 	text-decoration: none;
 	border-top-left-radius: 48%;
 	border-bottom-left-radius: 47%;
@@ -164,10 +162,9 @@ div a:hover {
   opacity: 1;
 }
 
-
 input[type=range] {
-  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
-  width: 300px; /* Specific width is required for Firefox. */
+  -webkit-appearance: none;
+  width: 300px;
 }
 
 input[type=range]::-webkit-slider-thumb {
@@ -175,18 +172,17 @@ input[type=range]::-webkit-slider-thumb {
 }
 
 input[type=range]:focus {
-  outline: none; /* Removes the blue border. You should probably do some kind of focus styling for accessibility reasons though. */
+  outline: none;
 }
 
 input[type=range]::-ms-track {
   width: 100%;
   cursor: pointer;
-  background: transparent; /* Hides the slider so custom styles can be added */
+  background: transparent;
   border-color: transparent;
   color: transparent;
 }
 
-/* Special styling for WebKit/Blink */
 input[type=range]::-webkit-slider-thumb {
   -webkit-appearance: none;
   border: none;
@@ -195,10 +191,9 @@ input[type=range]::-webkit-slider-thumb {
   border-radius: 50%;
   background: #ff7858;
   cursor: pointer;
-  margin-top: -14px; /* You need to specify a margin in Chrome, but in Firefox and IE it is automatic */
+  margin-top: -14px;
 }
 
-/* All the same stuff for Firefox */
 input[type=range]::-moz-range-thumb {
   border: none;
   height: 36px;
@@ -208,7 +203,6 @@ input[type=range]::-moz-range-thumb {
   cursor: pointer;
 }
 
-/* All the same stuff for IE */
 input[type=range]::-ms-thumb {
   border: none;
   height: 36px;
@@ -218,8 +212,6 @@ input[type=range]::-ms-thumb {
   cursor: pointer;
 }
 
-
-/* Track*/
 input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
   height: 8.4px;
@@ -235,7 +227,7 @@ input[type=range]:focus::-webkit-slider-runnable-track {
 }
 
 input[type=range]::-moz-range-track {
-   width: 100%;
+  width: 100%;
   height: 8.4px;
   cursor: pointer;
   box-shadow: none;
@@ -245,7 +237,7 @@ input[type=range]::-moz-range-track {
 }
 
 input[type=range]::-ms-track {
-   width: 100%;
+  width: 100%;
   height: 8.4px;
   cursor: pointer;
   box-shadow: none;
@@ -272,32 +264,32 @@ input[type=range]::-ms-track {
     transform: translate(-50%,-50%) rotate(0deg);
     border-top-left-radius:50%;
     border-top-right-radius:50%;
-     border-bottom-right-radius:50%;
+    border-bottom-right-radius:50%;
     border-bottom-left-radius:50%;
   }
   20% {
     border-top-left-radius:42%;
     border-top-right-radius:50%;
-     border-bottom-right-radius:46%;
+    border-bottom-right-radius:46%;
     border-bottom-left-radius:47%;
   }
    50% {
-     border-top-left-radius:40%;
+    border-top-left-radius:40%;
     border-top-right-radius:43%;
-     border-bottom-right-radius:46%;
+    border-bottom-right-radius:46%;
     border-bottom-left-radius:44%;
   }
    75% {
     border-top-left-radius:52%;
     border-top-right-radius:45%;
-     border-bottom-right-radius:48%;
+    border-bottom-right-radius:48%;
     border-bottom-left-radius:50%;
   }
   100% {
     transform: translate(-50%,-50%) rotate(360deg);
-     border-top-left-radius:50%;
+    border-top-left-radius:50%;
     border-top-right-radius:50%;
-     border-bottom-right-radius:50%;
+    border-bottom-right-radius:50%;
     border-bottom-left-radius:50%;
   }
 }
