@@ -3,9 +3,6 @@ body {
 	background-color: #37457e;
 	color: #fff;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-	-webkit-transition: all .2s ease-in-out;
-	   -moz-transition: all .2s ease-in-out;
-	        transition: all .2s ease-in-out;
 	overflow: hidden;
 
 }
@@ -95,28 +92,23 @@ div a:hover {
 	            opacity: .50;
 }
 
-.start {
-	display: none;
-	text-align: center;
+.block {
+  display: block;
 }
 
-.start label {
-	display: block;
-	position: absolute;
-	top: 0;
-	left: 50%;
-	width: 250px;
-	-webkit-transform:translateX(-50%);
-	-moz-transform:translateX(-50%);
-	transform:translateX(-50%);
+.center {
+  text-align: center;
 }
 
-.start input {
-	margin-top: 80px;
-	width: 300px;
+.form-container {
+  opacity: 0;
 }
 
-.start a {
+.form-container.fadeIn {
+  opacity: 1;
+}
+
+.submit-btn {
 	margin-top: 30px;
 	display: block;
 	border-radius: 50%;
@@ -130,9 +122,14 @@ div a:hover {
 	margin-left: auto;
 	margin-right: auto;
 	cursor: pointer;
+  border: 0;
 }
 
-.start a:hover {
+.submit-btn:focus {
+  outline: 0;
+}
+
+.submit-btn:hover {
 	filter: alpha(opacity=90);
 	     -khtml-opacity: .9;
 	       -moz-opacity: .9;
@@ -235,12 +232,14 @@ input[type=range]::-ms-track {
   border: none;
 }
 
+.loading-indicator {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
+
 .spinner {
 	background-color: #ff7858;
-	position: absolute;
-	left: 50%;
-	top: 50%;
-
 	width: 200px;
 	height: 200px;
 	animation: spinner 3s infinite linear;
@@ -278,6 +277,32 @@ input[type=range]::-ms-track {
     border-top-right-radius:50%;
      border-bottom-right-radius:50%;
     border-bottom-left-radius:50%;
+  }
+}
+
+.fadeOut {
+  animation: fadeOut .5s linear;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.fadeIn {
+  animation: fadeIn .5s linear;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 

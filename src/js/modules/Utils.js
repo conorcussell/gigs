@@ -8,7 +8,11 @@ export function getMonth() {
   return months[d.getMonth()];
 }
 
-export function distance(lat1, lon1, lat2, lon2) {
+export function calculateDistance(gig, userPosition) {
+  return distance(gig.location.lat, gig.location.lng, userPosition.lat, userPosition.lng);
+}
+
+function distance(lat1, lon1, lat2, lon2) {
   const radlat1 = Math.PI * lat1/180;
   const radlat2 = Math.PI * lat2/180;
   const radlon1 = Math.PI * lon1/180;

@@ -11,16 +11,21 @@
   <body>
     <header>Gigs near you tonight</header>
     <div class="content">
-        <a class="js-shuffle-gigs">
-          Shuffle
-        </a>
-        <div class="js-gig">
-
-        </div>
+      <div class="loading-indicator js-loading">
+        <div class="spinner"></div>
+      </div>
+      <div class="js-form-container form-container" style='display:none;'>
+        <form class="js-form center">
+          <label class="block">
+            <output for='range' id='range-output'>5</output>
+            Miles
+          </label>
+          <input id="max-distance" class="slider js-distance" type='range' min='1' value='5' max='50' step='1'>
+          <button class="js-submit submit-btn">Find Gigs</button>
+        </form>
+      </div>
     </div>
-    <a class="shuffle" style="background-color:#ff7858;">Shuffle</a>
     <div class="credit"><span>Data from</span> <img src="./img/songkick.png" class="api-credit"></div>
     <script src="../build/js/main.min.js" type="text/javascript"></script>
-    <!-- <script src="http://192.168.0.6:35729/livereload.js?snipver=1"></script> -->
   </body>
 </html>

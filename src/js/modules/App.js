@@ -1,9 +1,15 @@
 import fetchJsonp from 'fetch-jsonp';
 
+import { calculateDistance } from './Utils'
+
 const state = {
-  events: [],
-  eventsNearby: [],
-  maxDistance: 5
+  gigs: [],
+  gigsNearby: [],
+  maxDistance: 5,
+  userPosition: {
+    lat: '',
+    lng: ''
+  }
 };
 
 export function url(date, userPosition) {
@@ -13,7 +19,10 @@ export function url(date, userPosition) {
 }
 
 export function filterByDistance(array, distance) {
-  return array.filter(item => item.distance < distance);
+  return array.filter((item) => {
+    console.log(calculateDistance(item, state.userPosition));
+    return calculateDistance(item, state.userPosition) < distance;
+  });
 }
 
 // impure
@@ -24,7 +33,11 @@ export function getUserPosition() {
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition((position) => {
-      getGigs(url(date, {lat: position.coords.latitude, lng: position.coords.longitude}), 1);
+      state.userPosition = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+      getGigs(url(date, state.userPosition), 1);
     }, (error) => {
       getGigs(url(date), 1);
     });
@@ -33,17 +46,58 @@ export function getUserPosition() {
   }
 }
 
-export function getGigs(url, page) {
+function getGigs(url, page) {
   fetchJsonp(`${url}&page=${page}`, {jsonpCallback: 'jsoncallback'})
   .then((response) => {
     return response.json();
   }).then((json) => {
-    console.log(json.resultsPage.results);
+    console.log(json);
+    state.gigs = state.gigs.concat(json.resultsPage.results.event.map(gig => gig));
+    if (page * 50 < json.resultsPage.totalEntries) {
+      getGigs(url, page + 1);
+    } else {
+      fadeOut(document.querySelector('.js-loading'));
+      fadeIn(document.querySelector('.js-form-container'));
+    }
   }).catch((ex) => {
     return ex;
   });
 }
 
-export function renderGig(element, container) {
+export function fadeOut(el) {
+  el.classList.add('fadeOut');
+  setTimeout(() => {
+    el.style.display = 'none';
+  }, 500);
+}
 
+export function fadeIn(el) {
+  el.style.display = 'block';
+  setTimeout(() => {
+    el.classList.add('fadeIn');
+  }, 400);
+}
+
+export function updateValue(e) {
+  document.querySelector('#range-output').value = e.currentTarget.value;
+}
+
+export function handleFormSubmit(e) {
+  e.preventDefault();
+  const distance = e.currentTarget.querySelector('.js-distance').value;
+  state.maxDistance = distance;
+  state.gigsNearby = filterByDistance(state.gigs, state.maxDistance);
+  if (state.gigs.length) {
+    console.log(state.gigs, state.gigsNearby, state.maxDistance);
+  } else {
+    handleNoGigs();
+  }
+}
+
+export function handleNoGigs() {
+
+}
+
+export function renderGig(element, container) {
+  container.innerHTML('element');
 }
