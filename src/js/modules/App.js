@@ -101,7 +101,20 @@ export function handleFormSubmit(e) {
 function nextGig(gigs) {
   const gig = state.gigsNearby.splice(randomIndex(gigs));
   const el = createGigEl(gig[0]);
+  animateColors();
   renderGig(el, document.querySelector('.js-gig'));
+}
+
+function animateColors() {
+  const colors = ['#37457e', '#ffce6d'];
+
+  let c = colors;
+
+  const bg = document.querySelector('body');
+  const button = document.querySelector('.js-shuffle');
+
+  bg.style.backgroundColor = c.splice(randomIndex(c), 1)[0];
+  button.style.backgroundColor = c.splice(randomIndex(c), 1)[0];
 }
 
 export function handleShuffle(e) {
