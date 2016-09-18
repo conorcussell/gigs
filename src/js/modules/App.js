@@ -65,7 +65,7 @@ function getGigs(url, page) {
         fadeIn(document.querySelector('.js-form-container'));
       } else {
         state.gigsNearby = state.gigs;
-        fadeOut(document.querySelector('.js-form-container'));
+        fadeOut(document.querySelector('.js-loading'));
         setTimeout(() => {
           fadeIn(document.querySelector('.js-gig'));
           document.querySelector('.js-shuffle').classList.add('active');
