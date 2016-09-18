@@ -1,6 +1,6 @@
 import fetchJsonp from 'fetch-jsonp';
 
-import { calculateDistance, randomIndex } from './Utils';
+import { calculateDistance, randomIndex, getMonth } from './Utils';
 
 const state = {
   gigs: [],
@@ -88,7 +88,10 @@ export function handleFormSubmit(e) {
   state.gigsNearby = filterByDistance(state.gigs, state.userPosition, state.maxDistance);
   if (state.gigsNearby.length) {
     fadeOut(document.querySelector('.js-form-container'));
-    fadeIn(document.querySelector('.js-gig'));
+    setTimeout(() => {
+      fadeIn(document.querySelector('.js-gig'));
+      document.querySelector('.js-shuffle').classList.add('active');
+    }, 500);
     nextGig(state.gigsNearby);
   } else {
     handleNoGigs();
@@ -103,15 +106,36 @@ function nextGig(gigs) {
 
 export function handleShuffle(e) {
   e.preventDefault();
-  nextGig(state.nearbyGigs);
+  if (state.gigsNearby.length) {
+    nextGig(state.gigsNearby);
+  } else {
+    handleNoGigs();
+  }
 }
 
 export function createGigEl(gig) {
-  return `<a href="${gig.uri}" target="_blank">${gig.displayName}</a>`;
+  return `<a href="${gig.uri}" target="_blank">${stripDate(gig.displayName)}</a>`;
+}
+
+function stripDate(title) {
+  return title.slice(0, title.indexOf(` (${getMonth()}`));
 }
 
 export function handleNoGigs() {
   fadeOut(document.querySelector('.js-form-container'));
+
+  const gig = document.querySelector('.js-gig');
+  gig.innerHTML = 'No Gigs found, widen your search!';
+  setTimeout(() => {
+    fadeOut(gig);
+    gig.innerHTML = '';
+    fadeIn(document.querySelector('.js-form-container'));
+  }, 2000);
+
+  const shuffle = document.querySelector('.js-shuffle');
+  if (shuffle && shuffle.classList.contains('active')) {
+    shuffle.classList.remove('active');
+  }
 }
 
 export function renderGig(element, container) {
