@@ -1,6 +1,6 @@
 import fetchJsonp from 'fetch-jsonp';
 
-import { calculateDistance } from './Utils'
+import { calculateDistance } from './Utils';
 
 const state = {
   gigs: [],
@@ -18,10 +18,9 @@ export function url(date, userPosition) {
   return `http://api.songkick.com/api/3.0/events.json?apikey=${apiKey}&location=${location}&min_date=${date}&max_date=${date}`;
 }
 
-export function filterByDistance(array, distance) {
+export function filterByDistance(array, userPosition, distance) {
   return array.filter((item) => {
-    console.log(calculateDistance(item, state.userPosition));
-    return calculateDistance(item, state.userPosition) < distance;
+    return calculateDistance(item, userPosition) < distance;
   });
 }
 
@@ -51,7 +50,6 @@ function getGigs(url, page) {
   .then((response) => {
     return response.json();
   }).then((json) => {
-    console.log(json);
     state.gigs = state.gigs.concat(json.resultsPage.results.event.map(gig => gig));
     if (page * 50 < json.resultsPage.totalEntries) {
       getGigs(url, page + 1);
@@ -86,7 +84,7 @@ export function handleFormSubmit(e) {
   e.preventDefault();
   const distance = e.currentTarget.querySelector('.js-distance').value;
   state.maxDistance = distance;
-  state.gigsNearby = filterByDistance(state.gigs, state.maxDistance);
+  state.gigsNearby = filterByDistance(state.gigs, state.userPosition, state.maxDistance);
   if (state.gigs.length) {
     console.log(state.gigs, state.gigsNearby, state.maxDistance);
   } else {
