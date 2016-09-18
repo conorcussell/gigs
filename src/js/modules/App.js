@@ -104,7 +104,7 @@ export function handleFormSubmit(e) {
 }
 
 function nextGig(gigs) {
-  const gig = state.gigsNearby.splice(randomIndex(gigs));
+  const gig = state.gigsNearby.splice(randomIndex(gigs), 1);
   const el = createGigEl(gig[0]);
   animateColors();
   renderGig(el, document.querySelector('.js-gig'));
