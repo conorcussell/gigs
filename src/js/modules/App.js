@@ -1,5 +1,4 @@
 import fetchJsonp from 'fetch-jsonp';
-
 import { calculateDistance, randomIndex, getMonth } from './Utils';
 
 const state = {

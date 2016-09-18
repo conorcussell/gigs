@@ -4,7 +4,6 @@ document.onreadystatechange = function () {
   if (document.readyState === 'complete') {
     getUserPosition();
 
-
     const form = document.querySelector('.js-form');
     if (form) {
       form.addEventListener('submit', handleFormSubmit);
