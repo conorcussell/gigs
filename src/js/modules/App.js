@@ -12,6 +12,8 @@ const state = {
   }
 };
 
+// pure functions
+
 export function url(date, userPosition) {
   const apiKey = 'afM2GDbBHSRIRxf6';
   const location = userPosition ? `geo:${userPosition.lat},${userPosition.lng}` : 'clientip';
@@ -22,6 +24,10 @@ export function filterByDistance(array, userPosition, distance) {
   return array.filter((item) => {
     return calculateDistance(item, userPosition) < distance;
   });
+}
+
+export function createGigEl(gig) {
+  return `<a href="${gig.uri}" target="_blank">${stripDate(gig.displayName)}</a>`;
 }
 
 // impure
@@ -106,15 +112,13 @@ function nextGig(gigs) {
 }
 
 function animateColors() {
-  const colors = ['#37457e', '#ffce6d'];
-
-  let c = colors;
+  let colors = ['#18807a','#4fba8a','#ffce6d','#ff7858','#f84045','#37457e'];
 
   const bg = document.querySelector('body');
   const button = document.querySelector('.js-shuffle');
 
-  bg.style.backgroundColor = c.splice(randomIndex(c), 1)[0];
-  button.style.backgroundColor = c.splice(randomIndex(c), 1)[0];
+  bg.style.backgroundColor = colors.splice(randomIndex(colors), 1)[0];
+  button.style.backgroundColor = colors.splice(randomIndex(colors), 1)[0];
 }
 
 export function handleShuffle(e) {
@@ -126,19 +130,24 @@ export function handleShuffle(e) {
   }
 }
 
-export function createGigEl(gig) {
-  return `<a href="${gig.uri}" target="_blank">${stripDate(gig.displayName)}</a>`;
-}
-
 function stripDate(title) {
-  return title.slice(0, title.indexOf(` (${getMonth()}`));
+  const month = getMonth();
+  if (title.indexOf(month) !== -1) {
+    return title.slice(0, title.indexOf(` (${month}`));
+  } else {
+    return title;
+  }
 }
 
 export function handleNoGigs() {
   fadeOut(document.querySelector('.js-form-container'));
 
   const gig = document.querySelector('.js-gig');
+
+  if (gig.style.display === 'none') { fadeIn(gig); }
+
   gig.innerHTML = 'No Gigs found, widen your search!';
+
   setTimeout(() => {
     fadeOut(gig);
     gig.innerHTML = '';

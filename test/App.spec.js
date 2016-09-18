@@ -1,8 +1,5 @@
 import { url, filterByDistance, createGigEl } from '../src/js/modules/App';
 import { expect } from 'chai';
-import jsdom from 'jsdom';
-const window = jsdom().defaultView;
-const document = window.document;
 
 describe('url', () => {
   describe('given all arguments', () => {
@@ -51,15 +48,7 @@ describe('filterByDistance', () => {
 
 describe('createGigEl', () => {
   it('returns html for gig',  () => {
-    const gig = { displayName: 'Gig Name', url: 'https://www.songkick.com/gig-name' };
+    const gig = { displayName: 'Gig Name', uri: 'https://www.songkick.com/gig-name' };
     expect(createGigEl(gig)).to.equal('<a href="https://www.songkick.com/gig-name" target="_blank">Gig Name</a>');
-  });
-});
-
-describe('renderGig', () => {
-  const container = document.createElement('div');
-  const element = document.createElement('a');
-  it('renders element in container', () => {
-
   });
 });
