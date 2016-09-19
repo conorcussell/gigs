@@ -11,7 +11,7 @@
   <body class="m0 white center">
     <header class="h3 mt1">Gigs near you tonight</header>
     <div class="absolute content-center center white h1 col-12">
-      <div class="loading-indicator js-loading">
+      <div class="loading-indicator absolute js-loading">
         <div class="spinner"></div>
       </div>
       <div class="js-form-container form-container" style='display:none;'>
@@ -21,13 +21,13 @@
             Miles
           </label>
           <input id="max-distance" class="slider js-distance" type='range' min='1' value='5' max='50' step='1'>
-          <button class="js-submit submit-btn">Find Gigs</button>
+          <button class="js-submit center h4 text-decoration-none block submit-btn">Find Gigs</button>
         </form>
       </div>
-      <div class="js-gig gig-container absolute content-center h2" style="display:none;">
+      <div class="js-gig col-12 p2 absolute content-center h2" style="display:none;">
       </div>
     </div>
-    <a class="shuffle js-shuffle">
+    <a class="shuffle h2 absolute p2 transition js-shuffle">
       Shuffle
     </a>
     <div class="credit"><span>Data from</span> <img src="./img/songkick.png" class="api-credit"></div>
