@@ -10,6 +10,7 @@
     "build:css": "postcss -u autoprefixer -u cssnano src/css/*.css -d build/css",
     "build:dev": "npm run rollup:watch & npm run livereload",
     "build:prod": "./node_modules/.bin/rollup -c rollup.config.prod.js",
+    "deploy": "npm run build:prod & npm run build:css & surge", 
     "test": "mocha --compilers js:babel-register"
   },
   "devDependencies": {
