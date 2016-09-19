@@ -1,50 +1,77 @@
 body {
-	margin: 0;
 	background-color: #37457e;
-	color: #fff;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	overflow: hidden;
-  -webkit-transition: all .2s ease-in-out;
-	-moz-transition: all .2s ease-in-out;
-	transition: all .2s ease-in-out;
 }
 
-header {
-	font-size: 24px;
-	text-align: center;
-	margin-top: 20px;
+.m0 {
+  margin: 0;
 }
 
-a {
-	-webkit-transition: all .2s ease-in-out;
-	-moz-transition: all .2s ease-in-out;
-	transition: all .2s ease-in-out;
-
+.mt1 {
+  margin-top: .5rem;
 }
 
-.content {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	-webkit-transform:translate(-50%,-50%);
-	-moz-transform:translate(-50%,-50%);
-	transform:translate(-50%,-50%);
-	text-align: center;
-	color: #fff;
-	font-size: 50px;
+.p2 {
+  padding: 1rem;
 }
 
-.gig-container {
+.col-12 {
+  width: 100%;
+}
+
+.absolute {
   position: absolute;
+}
+
+.center {
+  text-align: center;
+}
+
+.block {
+  display: block;
+}
+
+.content-center {
   top: 50%;
   left: 50%;
-  width: 90%;
   -webkit-transform:translate(-50%,-50%);
   -moz-transform:translate(-50%,-50%);
   transform:translate(-50%,-50%);
-  text-align: center;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.white {
   color: #fff;
+}
+
+.h1 {
+  font-size: 3rem;
+}
+
+.h2 {
   font-size: 2.5rem;
+}
+
+.h3 {
+  font-size: 1.75rem;
+}
+
+.transition {
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.gig-container {
+  width: 90%;
 }
 
 .shuffle {
@@ -57,11 +84,6 @@ a {
 	-moz-transform:translate(-50%, 200%);
 	transform:translate(-50%, 200%);
 	cursor: pointer;
-	-webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   --webkit-transition: all .3s ease-in-out;
   -moz-transition: all .3s ease-in-out;
@@ -74,13 +96,8 @@ a {
 	transform:translate(-50%, 0%);
 }
 
-div a {
-	color: #fff;
+.text-decoration-none {
 	text-decoration: none;
-}
-
-div a:hover {
-	text-decoration: underline;
 }
 
 .api-credit {
@@ -103,14 +120,6 @@ div a:hover {
 	-khtml-opacity: .50;
 	-moz-opacity: .50;
 	opacity: .50;
-}
-
-.block {
-  display: block;
-}
-
-.center {
-  text-align: center;
 }
 
 .form-container {

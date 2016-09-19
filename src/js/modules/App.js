@@ -26,7 +26,7 @@ export function filterByDistance(array, userPosition, distance) {
 }
 
 export function createGigEl(gig) {
-  return `<a href="${gig.uri}" target="_blank">${stripDate(gig.displayName)}</a>`;
+  return `<a href="${gig.uri}" class="white text-decoration-none" target="_blank">${stripDate(gig.displayName)}</a>`;
 }
 
 // impure
