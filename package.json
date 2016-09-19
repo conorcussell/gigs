@@ -7,19 +7,23 @@
   "scripts": {
     "rollup:watch": "./node_modules/.bin/rollup -c rollup.config.dev.js --watch",
     "livereload": "./node_modules/.bin/livereload 'build/'",
+    "build:css": "postcss -u autoprefixer -u cssnano src/css/*.css -d build/css",
     "build:dev": "npm run rollup:watch & npm run livereload",
     "build:prod": "./node_modules/.bin/rollup -c rollup.config.prod.js",
     "test": "mocha --compilers js:babel-register"
   },
   "devDependencies": {
+    "autoprefixer": "^6.4.1",
     "babel-core": "^6.14.0",
     "babel-preset-es2015-rollup": "^1.2.0",
     "babel-register": "^6.11.6",
     "chai": "^3.5.0",
+    "cssnano": "^3.7.5",
     "eslint": "^3.5.0",
     "jsdom": "^9.5.0",
     "livereload": "^0.5.0",
     "mocha": "^3.0.2",
+    "postcss": "^5.2.0",
     "rollup": "^0.35.9",
     "rollup-plugin-babel": "^2.6.1",
     "rollup-plugin-commonjs": "^4.1.0",
@@ -29,7 +33,6 @@
     "rollup-watch": "^2.5.0"
   },
   "dependencies": {
-    "autoprefixer": "latest",
     "fetch-jsonp": "^1.0.1"
   }
 }
