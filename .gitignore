@@ -1,4 +1,4 @@
 /node_modules/
-!*/build/CNAME
-build/**
+build/**/*
+!build/CNAME
 /secrets/
