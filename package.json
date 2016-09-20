@@ -11,7 +11,9 @@
     "build:css": "postcss -u autoprefixer -u cssnano src/css/*.css -d build/css",
     "build:dev": "npm run rollup:watch & npm run livereload",
     "build:prod": "./node_modules/.bin/rollup -c rollup.config.prod.js",
-    "deploy": "npm run build:prod & npm run build:css & surge",
+    "build:html": "htmlmin -o build/index.html src/index.html",
+    "build:img": "imagemin src/img/* --out-dir=build/img",
+    "deploy": "npm run build:prod & npm run build:css & npm run build:html & surge build",
     "test": "mocha --compilers js:babel-register"
   },
   "devDependencies": {
@@ -22,6 +24,8 @@
     "chai": "^3.5.0",
     "cssnano": "^3.7.5",
     "eslint": "^3.5.0",
+    "html-minifier-cli": "^0.1.0",
+    "imagemin-cli": "^3.0.0",
     "jsdom": "^9.5.0",
     "livereload": "^0.5.0",
     "mocha": "^3.0.2",
