@@ -7,10 +7,11 @@
   "scripts": {
     "rollup:watch": "./node_modules/.bin/rollup -c rollup.config.dev.js --watch",
     "livereload": "./node_modules/.bin/livereload 'build/'",
+    "watch:css": "nodemon -I --ext css --watch src/css/** --exec 'npm run build:css'",
     "build:css": "postcss -u autoprefixer -u cssnano src/css/*.css -d build/css",
     "build:dev": "npm run rollup:watch & npm run livereload",
     "build:prod": "./node_modules/.bin/rollup -c rollup.config.prod.js",
-    "deploy": "npm run build:prod & npm run build:css & surge", 
+    "deploy": "npm run build:prod & npm run build:css & surge",
     "test": "mocha --compilers js:babel-register"
   },
   "devDependencies": {

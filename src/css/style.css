@@ -103,12 +103,6 @@ body {
 	float: right;
 }
 
-.credit div {
-	position: absolute;
-	left: 0px;
-	top: 2px;
-}
-
 .credit {
 	width: 100px;
 	position: absolute;
